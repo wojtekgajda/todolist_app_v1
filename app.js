@@ -8,17 +8,17 @@ const app = express()
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static('public'))
-let itemsList = []
-let workItems = []
+const itemsList = []
+const workItems = []
 
 app.get('/', function (req, res) {
-    let day = date()
+    const day = date.getDay()
     res.render('list', {listTitle: day, itemsList: itemsList})
 
 })
 
 app.post('/', function (req, res) {
-    let item = req.body.newItem
+    const item = req.body.newItem
     if (req.body.list === 'Work list') {
         workItems.push(item)
         res.redirect('/work')

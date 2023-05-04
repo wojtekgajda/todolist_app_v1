@@ -3,16 +3,16 @@ const bodyParser = require('body-parser')
 const ejs = require('ejs')
 const date = require(__dirname + '/date.js')
 
-
 const app = express()
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static('public'))
-const itemsList = []
-const workItems = []
+// const itemsList = []
+// const workItems = []
 
 app.get('/', function (req, res) {
-    const day = date.getDay()
+    const day = date.getDate()
+
     res.render('list', {listTitle: day, itemsList: itemsList})
 
 })
